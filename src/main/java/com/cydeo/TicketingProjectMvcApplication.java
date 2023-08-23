@@ -11,6 +11,8 @@ public class TicketingProjectMvcApplication {
 
         char ch = 'a';
         System.out.println(ch + 0);
+        int x = 20 + +9 + -12 + +4 - -13 - +19;
+        System.out.println("x = " + x);
     }
 
 }
