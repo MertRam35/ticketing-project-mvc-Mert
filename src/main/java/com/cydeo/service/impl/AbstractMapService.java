@@ -18,17 +18,21 @@ public abstract class AbstractMapService<T, ID> {
     }
 
 
-    public T finById(ID id) {
+     T finById(ID id) {
         return map.get(id);
     }
 
 
-    public List<T> findAll() {
+     List<T> findAll() {
         return new ArrayList<>(map.values());
     }
 
 
-    public void deleteById(ID id) {
+    void deleteById(ID id) {
         map.remove(id);
+    }
+
+    void update(ID id, T object){
+        map.put(id,object);
     }
 }
