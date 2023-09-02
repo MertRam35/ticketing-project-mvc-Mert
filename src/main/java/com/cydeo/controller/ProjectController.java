@@ -23,7 +23,7 @@ public class ProjectController {
     public String projectCreate(Model model){
         model.addAttribute("project",new ProjectDTO());
 
-        model.addAttribute("managers",userService.findAll());
+        model.addAttribute("managers",userService.findManagers());
 
         model.addAttribute("projects",projectService.findAll());
 
@@ -48,6 +48,16 @@ public class ProjectController {
 
         return "redirect:/project/create";
 
+    }
+    @GetMapping("/complete/{projectCode}")
+    public String completeProject(@PathVariable ("projectCode") String projectCode){
+
+        projectService.finById()
+
+
+
+
+        return "redirect:/project/create";
     }
 
 
