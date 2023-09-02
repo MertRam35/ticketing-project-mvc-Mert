@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/project")
 public class ProjectController {
@@ -83,6 +85,10 @@ public class ProjectController {
     public String getProjectByManager(Model model) {
 
         UserDTO manager = userService.finById("john@cydeo.com");
+
+        List<ProjectDTO> projects = projectService.getCountedListOfProjectDTO(manager);
+
+        model.addAttribute("projects", projects);
 
 
 
