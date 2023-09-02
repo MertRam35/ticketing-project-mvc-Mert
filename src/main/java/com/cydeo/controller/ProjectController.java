@@ -74,11 +74,18 @@ public class ProjectController {
     // public String updateUser(@ModelAttribute("user") UserDTO user) {
     public String updateProject(ProjectDTO project) {
 
-
         projectService.update(project);
-
 
         return "redirect:/project/create";
     }
 
+    @GetMapping("/manager/project-status")
+    public String getProjectByManager(Model model) {
+
+        UserDTO manager = userService.finById("john@cydeo.com");
+
+
+
+        return "/manager/project-status";
+    }
 }
