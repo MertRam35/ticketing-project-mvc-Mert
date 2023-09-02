@@ -2,11 +2,13 @@ package com.cydeo.bootstrap;
 
 import com.cydeo.dto.ProjectDTO;
 import com.cydeo.dto.RoleDTO;
+import com.cydeo.dto.TaskDTO;
 import com.cydeo.dto.UserDTO;
 import com.cydeo.enums.Gender;
 import com.cydeo.enums.Status;
 import com.cydeo.service.ProjectService;
 import com.cydeo.service.RoleService;
+import com.cydeo.service.TaskService;
 import com.cydeo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -19,13 +21,15 @@ public class DataGenerator implements CommandLineRunner {
     private final RoleService roleService;
     private final UserService userService;
     private final ProjectService projectService;
+    private final TaskService taskService;
 
     @Autowired
-    public DataGenerator(RoleService roleService, UserService userService, ProjectService projectService) {
+    public DataGenerator(RoleService roleService, UserService userService, ProjectService projectService, TaskService taskService) {
         this.roleService = roleService;
         this.userService = userService;
 
         this.projectService = projectService;
+        this.taskService = taskService;
     }
 
     @Override
@@ -73,6 +77,15 @@ public class DataGenerator implements CommandLineRunner {
         projectService.save(project2);
         projectService.save(project3);
 
+        TaskDTO task1 = new TaskDTO(1L, project1, user8, "Controller", "Request Mapping", Status.OPEN, LocalDate.now());
+        TaskDTO task2 = new TaskDTO(2L, project1, user3, "Configuration", "Database connection", Status.OPEN, LocalDate.now());
+        TaskDTO task3 = new TaskDTO(3L, project1, user6, "Controller", "Request Mapping", Status.OPEN, LocalDate.now());
+        TaskDTO task4 = new TaskDTO(4L, project1, user7, "Controller", "Request Mapping", Status.OPEN, LocalDate.now());
+
+        taskService.save(task1);
+        taskService.save(task2);
+        taskService.save(task3);
+        taskService.save(task4);
 
     }
 }
